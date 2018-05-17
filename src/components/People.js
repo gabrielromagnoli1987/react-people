@@ -18,11 +18,11 @@ class People extends React.Component {
     this.setState({ people });
   };
 
-  deletePerson = index => {
+  deletePerson = person => {
     // 1. Take a copy of state
     const people = [ ...this.state.people ];
     // 2. Delete the person
-    //const index = people.indexOf(person);
+    const index = people.indexOf(person);
     people.splice(index, 1);
     // 3. Update the state
     this.setState({ people });
@@ -36,7 +36,10 @@ class People extends React.Component {
         <AddPersonForm addPerson={this.addPerson} />
         <ul>
           {this.state.people.map(person => (
-            <Person key={person.id} details={person} />
+            <li key={person.id}>
+              <Person key={person.id} details={person} />
+              <button onClick={() => this.deletePerson(person)}>Delete</button>
+            </li>
           ))}
         </ul>
       </div>

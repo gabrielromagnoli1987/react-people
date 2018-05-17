@@ -13,11 +13,11 @@ class Person extends React.Component {
   render() {
     const { name, lastname } = this.props.details;
     return(
-      <li>
+      <div>
         <h3>Person details</h3>
         <div>Name: {name}</div>
         <div>Lastname: {lastname}</div>
-      </li>
+      </div>
     );
   }
 }
