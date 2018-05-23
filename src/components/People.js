@@ -1,6 +1,6 @@
 import React from "react";
 import Person from "./Person";
-import AddPersonForm from "./AddPersonForm";
+import AddPersonForm from "./AddPersonForm2";
 
 class People extends React.Component {
 
@@ -18,7 +18,7 @@ class People extends React.Component {
     this.setState({ people });
   };
 
-  deletePerson = person => {
+  deletePerson = (person, event) => {
     // 1. Take a copy of state
     const people = [ ...this.state.people ];
     // 2. Delete the person
@@ -38,7 +38,7 @@ class People extends React.Component {
           {this.state.people.map(person => (
             <li key={person.id}>
               <Person key={person.id} details={person} />
-              <button onClick={() => this.deletePerson(person)}>Delete</button>
+              <button onClick={(e) => this.deletePerson(person, e)}>Delete</button>
             </li>
           ))}
         </ul>
